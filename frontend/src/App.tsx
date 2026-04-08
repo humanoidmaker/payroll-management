@@ -25,7 +25,7 @@ export default function App() {
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="*" element={<Login /> /></Routes>;
+        <Route path="*" element={<Login />} /></Routes>;
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
