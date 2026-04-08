@@ -43,3 +43,20 @@ async def init_db():
             {"name": "Operations", "code": "OPS"},
             {"name": "Sales", "code": "SAL"},
         ])
+
+    # Email settings defaults
+    email_defaults = [
+        {"key": "smtp_host", "value": ""},
+        {"key": "smtp_port", "value": "587"},
+        {"key": "smtp_user", "value": ""},
+        {"key": "smtp_pass", "value": ""},
+        {"key": "smtp_from", "value": ""},
+        {"key": "email_verification_enabled", "value": "true"},
+        {"key": "email_welcome_enabled", "value": "true"},
+        {"key": "email_password_reset_enabled", "value": "true"},
+        {"key": "email_password_changed_enabled", "value": "true"},
+        {"key": "require_email_verification", "value": "false"},
+    ]
+    for d in email_defaults:
+        await db.settings.update_one({"key": d["key"]}, {"$setOnInsert": d}, upsert=True)
+
